@@ -11,7 +11,7 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override public void addCorsMappings(CorsRegistry r) {
                 r.addMapping("/api/**")
-                        .allowedOrigins("*")
+                        .allowedOrigins("http://localhost:8081","http://localhost:8080")
                         .allowedMethods("GET","POST","PUT","DELETE");
             }
         };
