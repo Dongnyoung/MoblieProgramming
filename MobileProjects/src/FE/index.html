@@ -1,25 +1,28 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-    <meta charset="utf-8">
-    <title>My PWA</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- PWA manifest -->
-    <link rel="manifest" href="manifest.webmanifest">
-
-    <!-- iOS 홈화면 아이콘 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="icon-192.png">
-
+    <meta charset="utf-8"/>
+    <title>Kakao 지도 + 내 위치</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
-        body { font-family: sans-serif; padding: 24px; }
+        /* 혹시 외부 CSS가 높이를 0으로 만들지 못하게 방지 */
+        html, body { margin: 0; padding: 0; }
+        #map { width: 500px; height: 500px; }
     </style>
 </head>
 <body>
-<h1>HTML + Spring + PWA ✅</h1>
-<p id="msg">Loading...</p>
+<div id="map"></div>
 
+<!-- SDK: autoload=false 로 넣고, 로드 완료 후 initMap 호출 -->
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=6ba7f6e49004cc9be50fbc1938036eee&autoload=false"></script>
+<script>
+    kakao.maps.load(() => {
+        // app.js에 정의된 initMap 실행
+        if (window.initMap) window.initMap();
+    });
+</script>
+
+<!-- 우리가 작성한 스크립트 -->
 <script src="app.js"></script>
 </body>
 </html>
